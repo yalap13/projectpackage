@@ -1,0 +1,1122 @@
+\documentclass{article}
+\usepackage{projectpackage5.1}
+
+\pagestyle{fancy}
+\lhead{PHY-1004: Devoir 2}
+\rhead{William Beaulieu, Alexis Horik et Marc-Antoine Plourde}
+
+
+
+\begin{document}
+\begin{center}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+
+William \textsc{Beaulieu}\\
+536 767 306
+
+Alexis \textsc{Horik}\\
+536 779 971\\
+
+Marc-Antoine \textsc{Plourde}\\ 
+536 775 477
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Travail présenté à :} \\
+Carmelle \textsc{Robert} \\
+\end{flushright}
+\end{minipage}\\[0.5cm]
+{\Large Devoir 3}\\[0.4cm]
+ {\large PHY-1004: Physique mathématique III\\[0.4cm]
+ 22 février 2021}\\[10pt]
+\hrulefill
+\end{center}
+\pagenumbering{arabic}
+
+$$\dv*{}$$
+
+$$\veps$$
+
+$$\rv$$
+
+$$\rb$$
+
+$$\rn$$
+
+$$\num{3,141592653589793}$$
+$$\num{3.141592653589793}$$
+$$3,141592653589793$$
+$$3.141592653589793$$
+
+$$\vu{A}_x$$
+
+$$\indtemps$$
+
+$$\deptemps$$
+
+$$\bigo{\frac{x}{2}}$$
+
+$$\arsech{2}$$
+
+$$\dv*{x}$$
+
+
+\section*{Question 1 (25\%) Trouvez les valeurs propres et les fonctions propres du problème suivant:}
+
+$$2x^3y''(x) + 4x^2 y'(x) + \beta x y(x) = 0 \qquad 1 \leq x \leq 3 ,$$
+
+ayant les conditions frontières: $y(1) = y(3) = 0$.
+\bigskip
+
+\noindent Dans votre démarche, suivez les étapes:
+
+\bigskip
+
+
+
+
+
+
+
+
+
+
+\indent \textbf{a1} Expliquez que vous avez un cas régulier de Sturm-Liouville.
+
+Tout d'abord, on regarde les $s(x)$, $s'(x)$, $v(x)$ et $w(x)$.
+Pour avoir une forme de Sturm-Liouville, il faut que le coefficient du $y'(x)$ soit la dérivée du coefficient du $y''(x)$. Pour obtenir cette forme, il suffit de diviser toute l'équation par $x$. On obtient donc l'équation suivante:
+
+$$2x^2y''(x) + 4x y'(x) + \beta  y(x) = 0$$
+
+Les coefficients des $y^{(n)}$ de cette équation sont donc:
+
+$$ s(x) = 2x^2 $$
+$$ s'(x) = 4x $$
+$$ v(x) = 0 $$
+$$ w(x) = 1 $$
+
+On sait que toutes ces fonctions sont continues sur $\R$ et donc elles sont aussi continues sur $ 1 \leq x \leq 3 $.
+
+
+De plus, on sait que les fonctions $s(x)$ et $w(x)$ sont supérieures à 0.
+
+Finalement, les conditions frontières sont séparées et homogènes. 
+
+On peut donc conclure qu'on a un cas régulier d'équation de Sturm-Liouville.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\indent \textbf{a2} Trouvez la solution générale de l’équation de Sturm-Liouville. Considérez une forme pratique pour ces solutions, en lien avec les conditions frontières du problème.
+
+$$2x^2y''(x) + 4x y'(x) + \beta  y(x) = 0$$
+
+On pose le changement de variable suivant:
+$$ x = \e^t $$
+$$ t = \ln(x) $$
+
+$$\dv{t}{x} = \frac{1}{x}$$
+
+On change aussi les dérivées de $y$.
+
+$$\dv{y}{x} = \dv{y}{x}$$
+$$\dv{y}{x} = \dv{t}{t}\dv{y}{x}$$
+$$\dv{y}{x} = \dv{t}{x}\dv{y}{t}$$
+
+On connait l'expression de $\dv{t}{x}$.
+
+$$\dv{y}{x} = \frac{1}{x}\dv{y}{t}$$
+$$\dv[2]{y}{x} = \frac{1}{x}\dv{t}{t}\dv{}{x}\dv{y}{t}-\frac{1}{x^2}\dv{y}{t}$$
+
+$$\dv[2]{y}{x} = \frac{1}{x}\dv{t}{x}\dv{}{t}\dv{y}{t}-\frac{1}{x^2}\dv{y}{t}$$
+
+$$\dv[2]{y}{x} = \frac{1}{x}\dv{t}{x}\dv[2]{y}{t}-\frac{1}{x^2}\dv{y}{t}$$
+
+$$\dv[2]{y}{x} = \frac{1}{x^2}\dv[2]{y}{t}-\frac{1}{x^2}\dv{y}{t}$$
+
+$$\dv[2]{y}{x} = \frac{1}{x^2}(\dv[2]{y}{t}-\dv{y}{t})$$
+
+On remplace ces relations dans l'équation.
+
+$$2(\dv[2]{y}{t}-\dv{y}{t}) + 4 \dv{y}{t} + \beta  y = 0$$
+
+On développe et on réarrange.
+
+$$2\dv[2]{y}{t}-2\dv{y}{t} + 4 \dv{y}{t} + \beta  y = 0$$
+
+$$2\dv[2]{y}{t} + 2 \dv{y}{t} + \beta  y = 0$$
+
+Le polynôme caractéristique de cette équation est:
+
+$$2r^2 + 2r + \beta = 0$$
+
+Les solutions sont donc:
+
+\sauce{fuck you}
+
+$$r = \frac{-1\pm\sqrt{1 - 2\beta}}{2}$$
+
+La solution générale de l'équation est donc:
+
+$$y = A\e^{\frac{-1+\sqrt{1 - 2\beta}}{2}}t + B\e^{\frac{-1-\sqrt{1 - 2\beta}}{2}t}$$
+
+On substitue $x$.
+
+$$y = A\e^{\frac{-1+\sqrt{1 - 2\beta}}{2}}\ln(x) + B\e^{\frac{-1-\sqrt{1 - 2\beta}}{2}\ln(x)}$$
+
+Dépendamment de la valeur de $\beta$, on peut réécrire l'équation de différentes façons de façon à retirer les termes imaginaires s'il y en a.
+
+Pour $\beta < \frac{1}{2}$:
+
+$$y = A x^{\frac{-1+\sqrt{1 - 2\beta}}{2}} + B x^{\frac{-1-\sqrt{1 - 2\beta}}{2}}$$
+
+
+Pour $\beta =  \frac{1}{2}$.
+
+Cette forme étant un peu particulière, on reprend l'équation caractéristique en substituant $\beta = \frac{1}{2}$.
+
+$$2r^2 + 2r + \frac{1}{2} = 0$$
+
+Cette équation a une unique solution, $r = -\frac{1}{2}$.
+
+On sait que lorsque l'équation caractéristique d'une équation différentielle linéaire à coefficients constants ne comporte qu'une seule solution, la solution de l'équation différentielle est la suivante:
+
+$$y = At\e^{rt}+B\e^{rt}$$
+
+En remplaçant $r$ par $\frac{1}{2}$, on obtient la solution suivante:
+
+
+$$y = At\e^{\frac{-1}{2}}t + B\e^{\frac{-1}{2}t}$$
+
+On revient en $x$.
+
+$$y = A\ln(x)x^{\frac{-1}{2}} + Bx^{\frac{-1}{2}}$$
+
+Pour $\beta > \frac{1}{2}$:
+
+$$y = A \e^{\frac{-1+i\sqrt{\abs{1 - 2\beta}}}{2}\ln(x)} + B \e^{\frac{-1-i\sqrt{\abs{1 - 2\beta}}}{2}\ln(x)}$$
+
+Ceci est équivalent à:
+
+$$y = C x^{\frac{-1}{2}}\cos(\frac{\sqrt{2\beta-1  }}{2}\ln(x)) + D x^{\frac{-1}{2}}\sin(\frac{\sqrt{ 2\beta-1}}{2}\ln(x))$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\indent \textbf{a3)} Trouvez les valeurs propres $\beta_n$  et les fonctions propres $\phi_n(x)$ de ce problème.
+
+Pour ce faire, il faut remplacer les conditions initiales dans chacune des solutions générales.
+
+Pour $\beta < \frac{1}{2}$:
+
+$$y(1) = 0$$
+
+$$0 = A\cdot 1^{\frac{-1+\sqrt{1 - 2\beta}}{2}} + B \cdot1^{\frac{-1-\sqrt{1 - 2\beta}}{2}}$$
+$$0 = A + B $$
+$$A = -B $$
+
+
+$$y(3) = 0$$
+
+$$0 = A\cdot 3^{\frac{-1+\sqrt{1 - 2\beta}}{2}} + B \cdot3^{\frac{-1-\sqrt{1 - 2\beta}}{2}}$$
+
+$$0 = A\cdot 3^{\frac{\sqrt{1 - 2\beta}}{2}} + B\cdot 3^{-\frac{\sqrt{1 - 2\beta}}{2}}$$
+
+$$0 = A\cdot 3^{\frac{1 - 2\beta}{2}} + B $$
+
+On insère l'équation obtenue avec l'autre condition frontière.
+
+$$0 = A\cdot 3^{\frac{1 - 2\beta}{2}} -A $$
+
+$$0 = A (3^{\frac{1 - 2\beta}{2}} -1) $$
+
+Si $A = 0$, on a une solution trivale, ce qui est peu intéressant.
+
+Si $A \neq 0$:
+
+$$1 = 3^{\frac{1 - 2\beta}{2}}  $$
+
+$$0 = \frac{1 - 2\beta}{2}  $$
+
+$$\beta = \frac{1}{2}$$
+
+Cette valeur n'est pas située dans l'intervalle de valeurs de $\beta$ pour lesquelles cette fonction est valide. On ne peut donc pas la considérer comme une valeur propre.
+
+Pour $\beta = \frac{1}{2}$:
+
+$$y = A\ln(x)x^{-\frac{1}{2}} + Bx^{-\frac{1}{2}}$$
+
+$$y(1) = 0$$
+
+$$0 =  B\cdot 1^{\frac{-1}{2}}$$
+
+Pour que l'équation demeure vraie, il faut supposer que $B = 0$, ce qui n'est que la solution triviale. Elle ne fournit pas de valeur propre.
+
+Pour $\beta > \frac{1}{2}$:
+
+$$y = C x^{-\frac{1}{2}}\cos(\frac{\sqrt{ 2\beta-1}}{2}\ln(x)) + D x^{-\frac{1}{2}}\sin(\frac{\sqrt{2\beta-1}}{2}\ln(x))$$
+
+$$y(1) = 0$$
+
+$$ 0 = C\cdot 1^{-\frac{1}{2}}\cos(\frac{\sqrt{2\beta-1}}{2}\cdot 0) + D\cdot 1^{-\frac{1}{2}}\sin(\frac{\sqrt{ 2\beta-1}}{2}\cdot 0)$$
+
+$$ 0 = C\cdot 1^{-\frac{1}{2}}$$
+
+$$ 0 = C $$
+
+$$y(3) = 0$$
+
+$$0 = C \cdot 3^{-\frac{1}{2}}\cos(\frac{\sqrt{ 2\beta-1}}{2}\ln(3)) + D\cdot 3^{-\frac{1}{2}}\sin(\frac{\sqrt{2\beta-1}}{2}\ln(3))$$
+
+$$0 = C \cos(\frac{\sqrt{2\beta-1}}{2}\ln(3)) + D\sin(\frac{\sqrt{2\beta-1}}{2}\ln(3))$$
+
+On sait que $ C = 0 $.
+
+$$0 = D\sin(\frac{\sqrt{2\beta-1}}{2}\ln(3))$$
+
+$$0 = \sin(\frac{\sqrt{2\beta-1}}{2}\ln(3))$$
+
+$$ n\pi = \frac{\sqrt{2\beta-1}}{2}\ln(3)$$
+
+$$ (\frac{2n\pi}{\ln(3)})^2 = 2\beta-1$$
+
+$$ \beta = \frac{1 + (\frac{2n\pi}{\ln(3)})^2}{2} $$
+
+En remplaçant $\beta$ dans la solution, on a:
+
+$$y = D x^{-\frac{1}{2}}\sin( \frac{n\pi}{\ln(3)}\ln(x))$$
+
+$$y = D x^{-\frac{1}{2}}\sin( n\pi\log_3\!(x))$$
+
+Les fonctions propres sont donc:
+
+$$\phi_n = x^{-\frac{1}{2}}\sin( n\pi\log_3\!(x))$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+\indent \textbf{a4)} Si vous avez utilisé au point précédent le théorème des cas réguliers pour dire qu’il n’y a pas de valeur propre $\lambda_n$ inférieure à zéro, démontrez que c’est effectivement le cas. Si vous n’avez pas utilisé le théorème, faites-le ici afin de bien vérifier votre résultat.
+
+\bigskip
+
+$\beta_n \geq 0\text{ si:}$
+
+\begin{enumerate}
+    \item $v(x) \leq 0$\\
+    \item $[s(x)\phi_n(x)\phi_n'(x)]\eval_{1}^{3}\leq 0$
+\end{enumerate}
+
+
+
+On sait que $v(x) = 0 $, ce qui est plus petit ou égal à 0. La première condition est respectée.
+
+À cause des conditions frontières, on sait que $\phi_n(1) = \phi_n(3) = 0$.
+
+On a donc que $[s(x)\phi_n(x)\phi_n'(x)]\eval_{1}^{3} = 0$, ce qui est plus petit ou égal à 0. La deuxième condition est respectée.
+
+À cause du théorème des cas réguliers, on peut conclure qu'il n'y a pas de valeurs propres supérieures à 0.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{b) Démontrez que les fonctions propres $\phi_n(x)$ sont orthogonales.}
+
+Pour qu'une fonction soit orthogonale à une autre, il faut que le produit scalaire des deux fonctions soit nul. Le produit scalaire entre deux fonctions dans un espace donné est: 
+
+$$\int\limits_{a}^{b}e_n e_mw(x)\dd x $$
+
+Dans notre cas, $w(x) = 1 $ et $e_n = x^{-\frac{1}{2}}\sin(n\pi\log_3\!(x))$.
+
+$$ \int\limits_{1}^{3}x^{-\frac{1}{2}}\sin(n\pi\log_3\!(x)) x^{-\frac{1}{2}}\sin(m\pi\log_3\!(x))\dd x ,\qquad n \neq m$$
+
+$$ \int\limits_{1}^{3}x^{-1}\sin(n\pi\log_3\!(x)) \sin(m\pi\log_3\!(x))\dd x $$
+
+$$u = \frac{\ln(x)}{\ln(3)}$$
+$$\ln(3)\dd u = \frac{1}{x}\dd x$$
+
+$$ \int\limits_{1}^{3}x^{-\frac{1}{2}}\sin(n\pi\log_3\!(x)) x^{-\frac{1}{2}}\sin(m\pi\log_3\!(x))\dd x =\int\limits_{0}^{1} \ln(3) \sin(n\pi u) \sin(m\pi u)\dd u $$
+
+% $$v = \sin(n\pi u) \qquad \dd v = n\pi \cos(n\pi u)\dd u $$
+
+% $$\dd w = \sin(m\pi u)\dd u \qquad  w = - \frac{\cos(m\pi u)}{m\pi} $$
+
+% $$ - \frac{\cos(m\pi u)\sin(n\pi u)}{m\pi} + \int\limits_{0}^{1} \frac{n}{m}\ln(3) \cos(n\pi u) \cos(m\pi u)\dd u $$
+
+
+
+$$= \ln \left(3\right)\frac{1}{2}\left(-\frac{1}{\pi n+\pi m}\sin \left(n\pi u+m\pi u\right)+\frac{1}{\pi n-\pi m}\sin \left(n\pi u-m\pi u\right)\right)\eval_{0}^{1}$$
+
+$$=\ln \left(3\right)\frac{1}{2}\left(-\frac{1}{\pi n+\pi m}\sin \left((n+m)\pi u\right)+\frac{1}{\pi n-\pi m}\sin \left((n-m)\pi u\right)\right)\eval_{0}^{1}$$
+
+$$=\ln \left(3\right)\frac{1}{2}\left(-\frac{1}{\pi n+\pi m}0+\frac{1}{\pi n-\pi m} 0 \right)-\ln \left(3\right)\frac{1}{2}\left(-\frac{1}{\pi n+\pi m}0+\frac{1}{\pi n-\pi m}0\right)$$
+
+$$ = 0 $$
+
+Comme le produit scalaire entre deux fonctions propres différentes est nul, les fonctions propres sont orthogonales.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{c) Représentez la fonction $f(x) = x^{3/2}$ pour $1 < x < 3$ dans la base des fonctions propres $\phi_n(x)$ obtenues pour ce problème.}
+
+Pour simplifier la démarche, on orthogonalise les fonctions propres.
+
+$$\hat{e}_n = \frac{e_n}{\langle e_n, e_n\rangle}$$
+
+$$\hat{\phi}_n = \frac{x^{-\frac{1}{2}}\sin( n\pi\log_3\!(x))}{\int\limits_{1}^{3}x^{-\frac{1}{2}}\sin( n\pi\log_3\!(x))x^{-\frac{1}{2}}\sin( n\pi\log_3\!(x))\dd x }$$
+
+$$\hat{\phi}_n = \frac{x^{-\frac{1}{2}}\sin( n\pi\log_3\!(x))}{ -(\ln(3) (\sin(2 \pi n) - 2 \pi n))/(4 \pi n)}$$
+
+$$\hat{\phi}_n = \frac{2}{ \ln(3)}x^{-\frac{1}{2}}\sin( n\pi\log_3\!(x))$$
+
+On sait que pour exprimer une fonction dans la base des fonctions propres trouvées, la formule est la suivante:
+
+$$f(x) = \sum_{n=1}^{\infty}\langle f(x), \hat{\phi}_n \rangle \hat{\phi}_n$$
+
+On calcule $\langle f(x), \hat{\phi}_n \rangle$ avec $f(x) = x^{\frac{3}{2}}$.
+
+$$\langle f(x), \hat{\phi}_n \rangle = \int\limits_{1}^{3}x^{\frac{3}{2}}x^{-\frac{1}{2}}\sin(n\pi\log_3\!(x))\dd x$$
+
+$$ = \int\limits_{1}^{3}x\sin(n\pi\log_3\!(x)) \dd x $$
+
+$$ = \frac{\ln(3) (\pi n - 9 \pi n \cos(\pi n) + 18 \ln(3) \sin(\pi n))}{\pi^2 n^2 + 4 \ln^2(3)}$$
+
+Sachant que $n \in \mathbb{N}$, l'expression devient:
+
+$$ = \frac{\ln(3) (\pi n - 9 \pi n(-1)^{n})}{\pi^2 n^2 + 4 \ln^2(3)}$$
+
+On insère cette expression dans la sommation.
+
+$$f(x) = 2\sum_{n=1}^{\infty}\frac{ \pi n - 9 \pi n(-1)^{n}}{\pi^2 n^2 + 4 \ln^2(3)}x^{-\frac{1}{2}}\sin( n\pi\log_3\!(x))$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{d) Dessinez sur un même graphique $f(x)$ et sa représentation en considérant le terme 1 de la sommation et la somme des 3, 5, 11, 100 et 1000 premiers termes.}
+
+
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics{pm3 fonctions.png}
+%     \caption{Graphiques de $f(x)$ évaluée avec 1, 3, 5, 11, 100 et 1000 termes}
+%     \label{fig:my_label}
+% \end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Question 2 (25\%)– Trouvez les valeurs propres et les fonctions propres du problème suivant:}
+$$y''(x) - 2 y'(x) + 3(\tau + 2) y(x) = 0\qquad 0 \leq x \leq 2,$$
+
+ayant les conditions frontières: $y(0) - y'(0) = 0$ et $2 y(2) - 2 y'(2) = 0$.
+
+\bigskip
+
+\noindent Dans votre démarche, suivez les étapes:
+
+\bigskip
+
+
+
+
+
+
+
+
+
+
+\indent \textbf{a1)} Effectuez le changement de \textbf{fonction}: $y(x) = \e^{ax}u(x)$ et identifiez la constante $a$ afin d’avoir
+une équation de Sturm-Liouville de la forme: $u''(x) + k u(x) = 0$ (où $k$ est une constante libre
+fonction de $\tau$).
+
+On pose le changement de fonction proposé:
+
+$$y(x) = \e^{ax}u(x)$$
+
+On calcule les dérivées premières et secondes de $y(x)$.
+
+$$y'(x) = a\e^{ax} u(x) + \e^{ax}u'(x)$$
+
+$$y''(x) = a^2\e^{ax} u(x) + 2a\e^{ax} u'(x) + \e^{ax}u''(x)$$
+
+On remplace dans ce changement dans l'équation.
+
+$$ a^2\e^{ax} u(x) + 2a\e^{ax} u'(x) + \e^{ax}u''(x) - 2 a\e^{ax} u(x) -2 \e^{ax}u'(x)+ 3\tau \e^{ax}u(x) + 6 \e^{ax}u(x) = 0 $$
+
+On simplifie.
+
+$$ \e^{ax}u''(x) + (2a-2)\e^{ax} u'(x)+ (3\tau + 6 - 2a + a^2)\e^{ax}u(x) = 0 $$
+
+On peut diviser l'équation par $\e^{ax}$.
+
+$$ u''(x) + (2a-2) u'(x)+ (3\tau + 6 - 2a + a^2)u(x)= 0 $$
+
+On veut que la valeur du coefficient de $u'(x)$ soit 0.
+
+$$2a-2 = 0$$
+
+$$a = 1$$
+
+On substitue cette valeur de $a$ pour simplifier l'expression.
+
+$$ u''(x) + (3\tau + 6 - 2 + 1) u(x) = 0 $$
+
+$$ u''(x) + (3\tau + 5) u(x) = 0 $$
+
+On a donc la forme $ u''(x) + k u(x) = 0 $ avec $k = 3\tau + 5$
+
+
+
+
+
+
+
+
+
+
+
+\noindent \textbf{a2)} Expliquez qu’avec ce changement de fonction, vous avez un cas régulier de Sturm-Liouville.
+
+\bigskip
+
+Pour déterminer les conditons frontières de $u(x)$, il faut utiliser les conditions frontières de $y(x)$ et les transformer pour les obtenir en fonction de $u(x)$.
+
+$$y(x) = \e^{x}u(x)$$
+
+$$y'(x) = \e^{x}u(x)+\e^{x}u'(x)$$
+
+On remplace $x$ par 0 pour la première condition frontière et par 2 pour la seconde.
+
+$$\e^{0}u(0)-\e^{0}u(0)+\e^{0}u'(0) = 0$$
+
+$$\e^{2}u(2)-\e^{2}u(2)-\e^{2}u'(2) = 0$$
+
+Les conditions frontières deviennent donc:
+
+$$u'(0) = 0$$
+
+$$u'(2) = 0$$
+
+On a donc un cas régulier de Sturm-Liouville parce que:
+\begin{enumerate}
+    \item Les fonctions $s(x)$, $s'(x)$, $v(x)$ et $w(x)$ sont continues sur $0\leq x \leq 2$\\
+    \item Les fonctions $s(x)$ et $w(x)$ sont plus grandes que 0\\
+    \item Les conditions initiales sont séparées et homogènes\\
+\end{enumerate}
+
+\indent \textbf{a3)} Avant de solutionner au long ce problème de Sturm-Liouville, peut-on s’attendre à avoir des valeurs propres $k_n$ (auxquelles seront associées les fonctions propres $\psi_n(x)$) inférieures à zéro?
+Justifiez votre réponse.\\
+
+On utilise le théorème des problèmes de Sturm-Liouville cas régulier. Selon ce théorème, on sait que:
+
+$$k_n \geq: \text{ si} $$
+
+\begin{enumerate}
+    \item $v(x) \leq 0$
+    \item $[s(x)\psi_n(x)\psi_n'(x)]\eval_{a}^{b} = 0$
+\end{enumerate}
+
+On sait que $v(x) =0$, donc la première condition est respectée.
+
+On sait aussi de par les conditions frontières que $\psi_n'(0)$ et $\psi_n'(2)$ sont nulles. Comme elles sont multipliées au reste de l'équation, l'équation sera nulle aussi, ce qui respecte la deuxième condition.
+
+On peut donc conclure qu'il n'y aura pas de valeur propre supérieure à 0.
+
+
+
+
+
+
+
+
+
+
+
+
+\indent \textbf{a4)} Trouvez alors les valeurs propres $\tau_n$ et les fonctions propres $\phi_n(x)$ de l’équation différentielle initiale.\\
+
+On résout l'équation différentielle.
+
+$$ u''(x) + k u(x) = 0 $$
+
+On sait que la solution d'une équation de cette forme est:
+
+$$u(x) = A\e^{\sqrt{k}x}+B\e^{-\sqrt{k}x}$$
+
+Comme on sait qu'il n'y a pas de valeur propre avec $k>0$, on considère seulement sa version pour un $k$ plus petit que 0 et pour $k = 0$.
+
+Si $k = 0$:
+
+$$u(x) = A+Bx$$
+
+Si $ k < 0$:
+
+$$u(x) = A\cos(\sqrt{k}x)+B\sin(\sqrt{k}x)$$
+
+On trouve les valeurs propres pour $k = 0$.
+
+Les conditions initiales sont:
+
+
+
+$$u'(2) = 0$$
+
+On dérive.
+
+$$u'(x) = B$$
+
+On substitue $$u'(0) = 0$$.
+
+$$ 0 = B $$
+
+On substitue $$u'(2) = 0$$.
+
+$$ 0 = B $$
+
+Les conditions initiales indique toutes deux que la constante $B$ est nulle, cependant, elles ne donnent aucune information quant à la valeur de $A$.
+
+On a donc $u(x) = A$, ce qui donne la fonction propre $\psi_0 = 1$.
+
+On retransforme en $y(x)$ pour obtenir $\phi_0$.
+
+$$\phi_0 = \e^{x}$$
+
+On trouve les fonctions propres pour $k < 0$:
+
+$$u(x) = A\cos(\sqrt{k}x)+B\sin(\sqrt{k}x)$$
+
+On dérive.
+
+$$u'(x) = - A \sqrt{k}\sin(\sqrt{k}x)+B\sqrt{k}\cos(\sqrt{k}x)$$
+
+On substitue $$u'(0) = 0$$.
+
+$$ 0 = - A \sqrt{k}\sin(\sqrt{k}0)+B\sqrt{k}\cos(\sqrt{k}0)$$
+
+$$ 0 = B\sqrt{k}$$
+
+Si $ B \neq 0 $, on trouve que $k = 0$, ce qui n'est pas dans notre intervalle de valeurs de $k$. On peut donc considérer que $B = 0$.
+
+On obtient la valeur propre $k = 0$, ce qui n'est pas strictement inférieur à 0. De toute façon, on avait déjà trouvé cette valeur propre lorsqu'on avait considéré le cas où $k = 0$.
+
+On substitue $$u'(2) = 0$$.
+
+$$ 0 = -A\sqrt{k}\sin(2\sqrt{k})+B\sqrt{k}\cos(2\sqrt{k})$$
+
+On sait que $$ 0 = B\sqrt{k}$$.
+
+$$ 0 = -A\sqrt{k}\sin(2\sqrt{k})$$
+
+Si $A = 0$, on a une solution triviale.
+
+On considère le cas $A \neq 0$.
+
+$$ 0 = \sin(2\sqrt{k})$$
+
+$$n\pi = 2\sqrt{k}, \ n = 1, 2, 3, 4...$$
+
+$$ k = (\frac{n\pi}{2})^2 $$
+
+On remplace $k$ dans la solution pour $k < 0$ pour obtenir $\psi_n(x)$.
+
+$$\psi_n(x) = \cos(\frac{n\pi x}{2})$$
+
+On revient en $y(x)$.
+
+$$\phi_n(x) = \e^{x}\cos(\frac{n\pi x}{2})$$
+
+On remarque que si on remplace $n$ par 0 dans cette équation, on obtient la fonction propre pour $k = 0$. On peut donc utiliser l'équation de $\phi_n(x)$ pour $k = 0$. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{b) Démontrez que les fonctions propres $\phi_n(x)$ sont orthogonales. \textit{Indice: Il faut trouver le facteur de pondération $w(x)$ pour l’équation différentielle initiale lorsqu’elle est transformée en une équation de Sturm-Liouville avec la méthode du facteur multiplicatif $\sigma(x)$. Notez aussi (sans le démontrer ici) que ette transformation permettrait de retrouver, mais après un peu plus d’efforts, les mêmes valeurs et fonctions propres de l’équation différentielle initiale que vous avez trouvées avec le changement de fonction effectué en a).}}
+
+Avant toute chose, il faut trouver le facteur $w(x)$. On définit $\alpha(x)$ comme étant le coefficient de $y'(x)$ dans l'équation différentielle de départ. Pour obtenir $w(x)$, il faut d'abord obtenir $\sigma(x)$. La formule de $\sigma(x)$ est la suivante:
+
+$$\sigma(x) = \e^{\int\frac{\alpha(x) - s'(x)}{s(x)} \dd x}$$
+
+$$\sigma(x) = \e^{\int\frac{-2 - 0}{1} \dd x}$$
+
+$$ \sigma(x) = D\e^{-2x} $$
+
+On multiplie tous les termes de l'équation par $D\e^{-2x}$.
+
+$$ D\e^{-2x}y''(x) - 2 D\e^{-2x}y'(x) + 3(\tau + 2)D\e^{-2x} y(x) = 0 $$
+
+La constante $D$ ne change rien à l'équation. On peut simplement l'enlever.
+
+$$ \e^{-2x}y''(x) - 2 \e^{-2x}y'(x) + 3(\tau + 2)\e^{-2x} y(x) = 0 $$
+
+Les coefficients de l'équation sont donc:
+
+\begin{gather*}
+    s(x) =  \e^{-2x}\\
+    s'(x) = -2\e^{-2x}\\
+    v(x) = 6\e^{-2x}\\
+    w(x) = 3\e^{-2x}\\
+\end{gather*}
+
+On peut maintenant calculer le produit scalaire entre deux fonctions propres.
+
+$$ \langle \phi_n, \phi_m \rangle = 3\int_{0}^{2} \e^{x}\cos(\frac{n\pi x}{2})\e^{x}\cos(\frac{m\pi x}{2})\e^{-2x} \dd x $$
+
+$$ \langle \phi_n, \phi_m \rangle = 3\int_{0}^{2} \cos(\frac{n\pi x}{2})\cos(\frac{m\pi x}{2}) \dd x $$
+$$ = 3\left(\frac{1}{(n+m)\pi }\sin\! \left(\frac{(n+m)\pi x}{2}\right)+\frac{1}{(n-m)\pi }\sin\! \left(\frac{(n-m)\pi x}{2}\right)\right)\eval_{0}^{2}$$
+
+$$ = 3\left(\frac{1}{(n+m)\pi }\sin\! \left((n+m)\pi\right)+\frac{1}{(n-m)\pi }\sin\! \left((n-m)\pi\right)\right)-3\left(\frac{1}{(n+m)\pi }0+\frac{1}{(n-m)\pi }0\right)$$
+
+Comme $m$ et $n$ sont des constantes, $\sin((m+n)\pi) $ donne 0.
+
+$$ = 3\left(\frac{1}{(n+m)\pi }0+\frac{1}{(n-m)\pi }0 \right)$$
+
+$$= 0 $$
+
+Seul le produit scalaire de deux vecteurs linéairement indépendants peut donner 0. On peut donc conclure que les fonctions propres sont linéairement indépendantes si elles ont un $n$ différent.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Question 3 (20\%)-Voici un problème de Sturm-Liouville pour un cas périodique:}
+$$y'' + \beta y = 0\qquad -3\pi \leq x \leq 3\pi$$ 
+
+$$CF:\ y(-3\pi) = y(3\pi)\qquad y'(-3\pi) = y'(3\pi)$$
+
+
+
+
+
+
+\subsection*{a) Expliquez qu’il s’agit bien d’un cas périodique de Sturm-Liouville.}
+Pour savoir si nous avons affaire à un cas périodique de Sturm-Louiville, nous devons premièrement vérifier si l'équation respecte les deux conditions suivante:
+\begin{align*}
+    1-&\ s,\ s',\ v\ et\ w=\text{continues et $\R$ sur } a\leq x\leq b\\
+    2-&\ s\ et\ w>0 \text{ sur } a\leq x\leq b\\
+    %3-&\ \text{CF sont homogènes et séparées: } \alpha y(a)+\beta y'(a)=0 \text{ et } \gamma y(b)+\delta y'(b)=0\\
+\end{align*}
+Sachant que la forme de l'équation de Sturm-Louiville est la suivante:
+\begin{gather*}
+    s(x)y''(x)+s'(x)y'(x)+[v(x)+\lambda w(x)]y(x)=0 \quad \text{ pour $a\leq x \leq b$ et $\lambda=\text{cte}$}
+\end{gather*}
+nous trouvons par l'équation donnée dans l'énoncer les valeurs de s, s', v et w.
+\begin{align*}
+    s(x)=&1 & s'(x)=&0 & v(x)=&0 & w(x)=&1
+\end{align*}
+Nous remarquons également par les conditions frontières que $a=-3\pi$ et $b=3\pi$. Ainsi, la première condition est respecté. s et w étant égales à 1, ils sont plus grand que 0 sur $a\leq x\leq b$, la deuxième condition est également respectée. Maintenant, nous remarquons que l'équation n'est pas régulière puisque les conditions frontières ne sont pas homogènes et séparées. Nous avons donc affaire à un cas périodique puisque les conditions frontière ont la forme:
+\begin{align*}
+    y(a)=&\ y(b) & y'(a)=&\ y'(b)
+\end{align*}
+où $a=-3\pi$ et $b=3\pi$.\\
+Il s'agit donc bien d'un cas périodique de Sturm-Louiville.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{b) Trouvez les valeurs propres et les fonctions propres de ce problème.}
+Nous devons maintenant résoudre l'équation différentielle. Nous avons cependant déjà rencontré cette forme d'équation et pouvons donc directement poser la forme de solution pour $\lambda\neq0$ et $\lambda=0$. Nous allons également dérivé celles-ci puisque nous en auront besoin pour les conditions frontière.\\
+\underline{Pour $\lambda\neq0$}:
+\begin{gather*}
+    y(x)=A\cos(\sqrt{\lambda}x)+B\sin(\sqrt{\lambda}x)\\
+    y'(x)=-A\sqrt{\lambda}\sin(\sqrt{\lambda}x)+B\sqrt{\lambda}\cos(\sqrt{\lambda}x)
+\end{gather*}
+\underline{Pour $\lambda=0$}:
+\begin{gather*}
+    y(x)=C+Dx\\
+    y'(x)=D
+\end{gather*}
+Avant de chercher des valeurs de $\lambda$, appliquons le théorème des cas régulier pour un cas périodique afin de voir s'il sera nécessaire de chercher des valeurs de $\lambda_n<0$. Nous savons que théorème stipule que $\lambda_n\geq0$ si $v(x)\leq0$ et si $[s(x)\varphi_n(x)\varphi_n'(x)]\eval_a^b\leq0$. Notre $v(x)$ étant égal à zéro, la première condition est respectée. Pour ce qui est de la deuxième condition, nous aurons besoin des valeurs de $s$, $a$ et $b$. Nous avons donc le test suivant:
+\begin{gather*}
+    s(b)\varphi_n(b)\varphi_n'(b)-s(a)\varphi_n(a)\varphi_n'(a)=\varphi_n(3\pi)\varphi_n'(3\pi)-\varphi_n(-3\pi)\varphi_n'(-3\pi)
+\end{gather*}
+Sachant par les conditions frontière que $y(-3\pi)=y(3\pi)\implies \varphi_n(-3\pi)=\varphi_n(3\pi)$ et que $y'(-3\pi)=y'(3\pi)\implies \varphi_n'(-3\pi)=\varphi_n'(3\pi)$, nous pouvons réécrire le test ainsi.
+\begin{gather*}
+    \varphi_n(3\pi)\varphi_n'(3\pi)-\varphi_n(3\pi)\varphi_n'(3\pi)=0\leq0
+\end{gather*}
+La deuxième condition est donc respecté et nous savons que nous avons pas besoin de chercher de $\lambda_n<0$.\\
+Trouvons maintenant les valeurs propres pour $\lambda_n\geq0$. Commençons par vérifier si $\lambda=0$ est une valeur propre. Nous avons que:
+\begin{gather*}
+    y(-3\pi)=y(3\pi)\\
+    \implies C+D(-3\pi)=C+D(3\pi)\\
+    C- D3\pi=C+ D3\pi\\
+    -D3\pi=D3\pi\\
+    0=D3\pi+D3\pi\\
+    0=D6\pi\\
+    \implies D=0
+\end{gather*}
+Ce qui nous donne par la forme de solution:
+\begin{align*}
+    y=&C & y'=&0
+\end{align*}
+Nous avons également:
+\begin{gather*}
+    y'(-3\pi)=y'(3\pi)\\
+    D=D
+\end{gather*}
+Il nous reste donc que la solution non triviale est $y(x)=C$ lorsque $C\neq0$ et $\lambda_0=0$ est donc une valeur propre. Nous pouvons ainsi trouver la fonction propre associé sachant que $y=C$. La fonction propre est la suivante:
+\begin{gather*}
+    \varphi_0=1
+\end{gather*}
+Cherchons maintenant les valeurs propres lorsque $\lambda>0$. Nous avons, grâce aux conditions frontières:
+\begin{gather*}
+    y(-3\pi)=y(3\pi)\\
+    A\cos(\sqrt{\lambda}(-3\pi))+B\sin(\sqrt{\lambda}(-3\pi))=A\cos(\sqrt{\lambda}3\pi)+B\sin(\sqrt{\lambda}3\pi)
+\end{gather*}
+Sachant que cos est une fonction paire et sin est fonction impaire:
+\begin{gather*}
+    A\cos(3\pi\sqrt{\lambda})-B\sin(3\pi\sqrt{\lambda})=A\cos(3\pi\sqrt{\lambda})+B\sin(3\pi\sqrt{\lambda})\\
+    -B\sin(3\pi\sqrt{\lambda})=B\sin(3\pi\sqrt{\lambda})\\
+    0=2B\sin(3\pi\sqrt{\lambda})\\
+\end{gather*}
+Ainsi nous avons un cas lorsque $B=0$ et un cas lorsque $B\neq0$.\\
+Pour $B=0$, nous avons que
+\begin{gather*}
+    y(x)=A\cos(\sqrt{\lambda}x).
+\end{gather*}
+Pour $B\neq0$, nous savons que
+\begin{gather*}
+    \sin(3\pi\sqrt{\lambda})=0
+\end{gather*}
+Maintenant, pour l'autre condition frontière:
+\begin{gather*}
+    y'(-3\pi)=y'(3\pi)\\
+    -A\sqrt{\lambda}\sin(-3\pi\sqrt{\lambda})+B\sqrt{\lambda}\cos(-3\pi\sqrt{\lambda})=-A\sqrt{\lambda}\sin(3\pi\sqrt{\lambda})+B\sqrt{\lambda}\cos(3\pi\sqrt{\lambda})
+\end{gather*}
+Sachant encore une fois que cos est une fonction paire et sin est une fonction impaire:
+\begin{gather*}
+    A\sqrt{\lambda}\sin(3\pi\sqrt{\lambda})+B\sqrt{\lambda}\cos(3\pi\sqrt{\lambda})=-A\sqrt{\lambda}\sin(3\pi\sqrt{\lambda})+B\sqrt{\lambda}\cos(3\pi\sqrt{\lambda})\\
+    A\sqrt{\lambda}\sin(3\pi\sqrt{\lambda})=-A\sqrt{\lambda}\sin(3\pi\sqrt{\lambda})\\
+    0=2A\sqrt{\lambda}\sin(3\pi\sqrt{\lambda})\\
+\end{gather*}
+Ainsi, si $A=0$, nous avons
+\begin{gather*}
+    y(x)=B\sin(\sqrt{\lambda}x)
+\end{gather*}
+et pour $A\neq0$, nous avons
+\begin{gather*}
+    \sin(3\pi\sqrt{\lambda})=0
+\end{gather*}
+Nous remarquons que le cas où $A$ et $B$ sont égales à 0, la solution est triviale et donc pas intéressante. Nous avons donc deux cas non triviaux, la cas où $A=0$ et $B\neq0$, et le cas où $A\neq0$ et $B=0$. Nous n'étudierons pas le cas où $A\neq0$ et $B\neq0$ puisque nous ne pouvons pas en soutirer d'information.\\
+\underline{Pour $A=0$ et $B\neq0$}:\\
+Ainsi, pour la première condition frontière lorsque $B\neq0$, nous avons:
+\begin{gather*}
+    \sin(3\pi\sqrt{\lambda})=0\\
+    \implies 3\pi\sqrt{\lambda_n}=n\pi \tag*{où $n=1, 2, 3,...$}\\
+    \sqrt{\lambda_n}=\frac{n\pi}{3\pi}\\
+    \lambda_n=(\frac{n}{3})^2 \tag*{où $n=1, 2, 3,...$}
+\end{gather*}
+Avec la deuxième condition frontière, nous pouvons trouver la fonction propre. Nous avons donc la condition suivante pour $A=0$:
+\begin{gather*}
+    y(x)=B\sin(\sqrt{\lambda_n}x)
+\end{gather*}
+En insérant l'expression des valeurs propres, nous obtenons:
+\begin{gather*}
+    \varphi_n=\sin(\sqrt{(\frac{n}{3})^2}x)\\
+    \varphi_n=\sin(\frac{n x}{3})\tag*{où $n=1, 2, 3,...$}\\
+\end{gather*}
+\underline{Pour $A\neq0$ et $B=0$}:\\
+Avec la deuxième condition frontière, nous pouvons trouver l'expression des valeurs propres lorsque $A\neq0$.
+\begin{gather*}
+    \sin(3\pi\sqrt{\lambda})=0\\
+    3\pi\sqrt{\lambda_n}=n\pi \tag*{où $n=1, 2, 3,...$}\\
+    \sqrt{\lambda_n}=\frac{n\pi}{3\pi}\\
+    \lambda_n=(\frac{n}{3})^2\\
+\end{gather*}
+La première condition frontière nous donne, lorsque $B=0$, l'équation suivante:
+\begin{gather*}
+    y(x)=A\cos(\sqrt{\lambda_n}x)
+\end{gather*}
+et en insérant l'expression des valeurs propres, nous avons:
+\begin{gather*}
+    \varphi_n=\cos(\sqrt{(\frac{n}{3})^2}x)\\
+    \varphi_n=\cos(\frac{nx}{3})\tag*{où $n=1, 2, 3,...$}\\
+\end{gather*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{c) Représentez la fonction $f(x) = x^2$ pour $-3\pi < x < 3\pi$ dans la base des fonctions propres trouvées
+en vous limitant aux 5 et aux 10 premiers termes de la sommation.}
+
+Comme on a deux fonctions propres, on utilise une notation différente pour pouvoir les différentier.
+
+$$ \varphi_n = \sin(\frac{n x}{3}) $$
+
+$$\psi_n = \cos(\frac{nx}{3})$$
+
+Avant de pouvoir représenter la fonction, il faut normaliser les fonctions propres.
+
+$$\hat{\varphi}_n = \frac{\varphi}{\langle \varphi_n,\varphi_n \rangle} $$
+
+$$\hat{\varphi}_n = \frac{\sin(\pi nx)}{\int\limits_{-3\pi}^{3\pi}\sin(\frac{nx}{3})\sin(\frac{nx}{3})\dd x}  $$
+
+$$\hat{\varphi}_n = \frac{\sin(\frac{nx}{3})}{ 3 \pi - (3 \sin(2 \pi n))/(2 n)} $$
+
+Parce qu'on sait que $n \in \mathbb{N}$:
+
+$$\hat{\varphi}_n = \frac{\sin(\frac{nx}{3})}{ 3 \pi} $$
+
+$$\hat{\psi}_n = \frac{\psi_n}{\langle \psi_n,\psi_n \rangle}$$
+
+$$\hat{\psi}_n = \frac{\cos(\frac{nx}{3})}{3 \pi + (3 \sin(2 \pi n))/(2 n)}$$
+
+Encore une fois, on sait que $n \in \mathbb{N}$:
+
+$$\hat{\psi}_n = \frac{\cos(\frac{nx}{3})}{3 \pi}$$
+
+
+
+% integral_(-3 π)^(3 π) cos^2(n π x) dx = sin(6 π^2 n)/(2 π n) + 3 π
+
+
+On sait que toute fonction peut être exprimée sur $-3\pi < x < 3\pi$ de la façon suivante:
+
+$$f(x) = \sum_{n=1}^{\infty}\langle f(x), \hat{\varphi}_n \rangle \hat{\varphi}_n + \sum_{n=1}^{\infty}\langle f(x), \hat{\psi}_n \rangle \hat{\psi}_n$$
+
+On calcule d'abord le produit scalaire entre $f(x)$ et $\hat{\varphi}_n(x)$.
+
+$$\langle x^2, \frac{\sin(\frac{nx}{3})}{ 3 \pi} \rangle = \int\limits_{-3\pi}^{3\pi} x^2\frac{\sin(\frac{nx}{3})}{ 3 \pi}\dd x $$
+
+$$ = \frac{18 x n \sin(\frac{nx}{3}) - 3 (n^2 x^2 - 18) \cos(\frac{nx}{3})}{3\pi n^3}\eval_{-3\pi}^{3\pi}$$
+
+$$ = \frac{18 \cdot 3\pi\cdot n \sin(n\pi) - 3 (n^2\cdot (3\pi)^2 - 18) \cos(3\pi n)}{3\pi n^3} -  \frac{18 (-3\pi) n \sin(\frac{n(-3\pi)}{3}) - 3 (n^2 (-3\pi)^2 - 18) \cos(\frac{n(-3\pi)}{3})}{3\pi n^3} $$
+
+
+$$ = \frac{- 3 (n^2\cdot (3\pi)^2 - 18) }{3\pi n^3} -  \frac{ - 3 (n^2 (-3\pi)^2 - 18)}{3\pi n^3} $$
+
+
+%$$ = -\frac{2 ((2 - \pi^2 n^2 x^2) \cos(\pi n x) + 2 \pi n x \sin(\pi n x))}{(\pi^2 n^2 (\sin(6 \pi^2 n) - 6 \pi^2 n))}\eval_{-3\pi}^{3\pi} $$
+
+$$ = 0$$ 
+
+%\text{ WTF?????}\textcolor{red}{HEHE\ LE\ \text{NUMÉRO}\ EST\ \text{CASSÉ}}
+
+On calcule ensuite le produit scalaire entre $f(x)$ et $\hat{\psi}_n$.
+
+$$\langle x^2, \frac{\cos(\frac{nx}{3})}{3 \pi} \rangle = \int\limits_{-3\pi}^{3\pi} x^2\frac{\cos(\frac{nx}{3})}{3 \pi}\dd x $$
+
+$$= \frac{18 ((\pi^2 n^2 - 2) \sin(\pi n) + 2 \pi n \cos(\pi n))} {\pi n^3} $$
+
+Comme on sait que $n \in \mathbb{N}$:
+
+$$= \frac{ 36 \pi n (-1)^{n}} {\pi n^3} $$
+
+
+
+
+
+% $$ = \frac{2 ((\pi^2 n^2 x^2 - 2) \sin(\pi n x) + 2 \pi n x \cos(\pi n x))}{\pi^2 n^2 (6 \pi^2 n + \sin(6 \pi^2 n))}\eval_{-3\pi}^{3\pi}$$
+
+% $$ = \frac{4 ((9 \pi^4 n^2 - 2) \sin(3 \pi^2 n) + 6 \pi^2 n \cos(3 \pi^2 n))}{\pi^2 n^2 (6 \pi^2 n + \sin(6 \pi^2 n))} $$
+
+On insère les produits scalaires dans l'équation.
+
+$$f(x) = \sum_{n=1}^{\infty}0\frac{\sin(\frac{nx}{3})}{ 3 \pi}  + \sum_{n=1}^{\infty}\frac{ 36 \pi n (-1)^{n}} {\pi n^3}\frac{\cos(\frac{nx}{3})}{ 3 \pi} $$
+
+$$f(x) =  \sum_{n=1}^{\infty}\frac{ 36 \pi n (-1)^{n}} {\pi n^3}\frac{\cos(\frac{nx}{3})}{ 3 \pi} $$
+
+
+
+
+
+
+\section*{Question 4 (10\%)-Dans le cas des équations spéciales suivantes, démontrez que le facteur de
+pondération issu du problème de Sturm-Liouville associée est bien celui qui est spécifiée.}
+\subsection*{a) L’équation de Chebyshev, $(1-x^2) y'' -x y' +\alpha^2
+y = 0 \text{ avec } y(1) \text{ et } y(-1)$ qui existent, a pour facteur de pondération $w(x) = 1/(1-x^2)^{1/2}$}
+
+
+
+On voit que l'équation de Chebyshev n'est pas une équation de Sturm-Liouuville, car la dérivée du coefficient en $y''$ n'égale pas à la dérivée de celui en $y'$ ($-2x\neq-x$). Cependant, à l'aide d'un facteur multiplicatif $\sigma$, on peut transformer l'équation de Chebyshev en équation de Sturm-Liouville et obtenir un problème de Sturm-Liouuville:
+\begin{gather*}
+    \sigma(x)(1-x^2) y'' -\sigma(x)x y' +\sigma(x)\alpha^2y = 0\\
+\end{gather*}
+On trouve $\sigma$:
+\begin{gather*}
+    \sigma(x) = e^{\int\frac{[\text{faux }s'(x)]-s'(x)}{s(x)}\dd{x}}\\
+    \sigma(x) = e^{\int\frac{-x+2x}{1-x^2}\dd{x}}\\
+    \sigma(x) = e^{-\frac{1}{2}\ln(1-x^2)}\\
+    \sigma(x) = e^{\ln(1-x^2)^{-1/2}}\\
+    \sigma(x) = \frac{1}{(1-x^2)^{1/2}}
+\end{gather*}
+On remplace dans l'équation avec les $\sigma$:
+\begin{gather*}
+    \frac{1}{(1-x^2)^{1/2}}(1-x^2) y'' -\frac{1}{(1-x^2)^{1/2}}x y' +\frac{1}{(1-x^2)^{1/2}}\alpha^2y = 0\\
+   (1-x^2)^{1/2} y'' -\frac{x}{(1-x^2)^{1/2}} y' +\frac{\alpha^2}{(1-x^2)^{1/2}}y = 0\\
+\end{gather*}
+On a donc:
+\begin{align*}
+    s(x)&=(1-x^2)^{1/2}&s'(x)&=\frac{-x}{(1-x^2)^{1/2}}& v(x)&=0 & w(x)&=\frac{1}{(1-x^2)^{1/2}}\\
+\end{align*}
+On a alors un problème de Sturm-Liouville et c'est un cas singulier puisque:\\
+
+
+
+1. s(x), s'(x), v(x) et w(x) sont continues et réelles sur $-1<x<1$.\\
+2. $s(x)$ et $w(x)$ sont $>0$ sur $-1<x<1$.\\
+3. Les conditions frontière existe et sont séparés.\\
+
+
+
+Avec ceci démontré, on conclut que le facteur de pondération est bel et bien \[w(x)=\frac{1}{(1-x^2)^{1/2}}\]
+
+\subsection*{b) L’équation de Laguerre, $x y'' + (1-x) y'+\beta y = 0$ avec $y(0)$ qui existe, a pour facteur de pondération $w(x) = \e^{-x}$.}
+
+
+
+On voit que l'équation de Laguerre n'est pas une équation de Sturm-Liouuville, car la dérivée du coefficient en $y''$ n'égale pas à la dérivée de celui en $y'$ ($1\neq-1$). Cependant, à l'aide d'un facteur multiplicatif $\sigma$, on peut transformer l'équation de Laguerre en équation de Sturm-Liouville et obtenir un problème de Sturm-Liouuville:
+\begin{gather*}
+    \sigma(x)x y'' + \sigma(x)(1-x) y'+\sigma(x)\beta y = 0\\
+\end{gather*}
+On trouve $\sigma$:
+\begin{gather*}
+    \sigma(x) = e^{\int\frac{[\text{faux }s'(x)]-s'(x)}{s(x)}\dd{x}}\\
+    \sigma(x) = e^{\int\frac{[1-x]-1}{x}\dd{x}}\\
+    \sigma(x) = e^{-\int\dd{x}}\\
+    \sigma(x) = e^{-\int\dd{x}}\\
+    \sigma(x) = e^{-x}\\
+\end{gather*}
+On remplace dans l'équation avec les $\sigma$:
+\begin{gather*}
+    e^{-x}x y'' + e^{-x}(1-x) y'+e^{-x}\beta y = 0\\
+\end{gather*}
+On a donc:
+\begin{align*}
+    s(x)&=e^{-x}x & s'(x)&=e^{-x}(1-x) & v(x)&=0 & w(x)&=e^{-x}\\
+\end{align*}
+On conclut que le facteur de pondération est bel et bien \[w(x)=e^{-x}\]
+
+\teXmas
+
+
+\end{document}

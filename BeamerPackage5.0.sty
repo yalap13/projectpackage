@@ -1,0 +1,219 @@
+\ProvidesPackage{beamerpackage5.0}
+
+% Version dérivée du ProjectPackage v5.0
+% Adapté pour la classe Beamer par Yannick "Yalap" Lapointe
+
+%-------------------------------
+% Beamer customization
+%-------------------------------
+
+\definecolor{LinkOrange}{RGB}{181,72,0}
+
+% Mini table des matières au début d'une section
+\newcommand*{\currentname}{\@currentlabelname}
+\AtBeginSection[]
+{
+    \begin{frame}{\currentname}
+        \setcounter{tocdepth}{2}
+        \tableofcontents[currentsection, sectionstyle=show/hide, subsectionstyle=show/show/hide]
+    \end{frame}
+}
+
+\usepackage{hyperref} % Liens cliquables dans PDF avec couleurs custom
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=LinkOrange,      
+    urlcolor=LinkOrange,
+}
+
+
+%-------------------------------
+% Base customization
+%-------------------------------
+
+\usepackage{cmap} % Facilite recherche de texte Ctrl+F
+\usepackage[french]{babel} % Écriture en français
+\usepackage[utf8]{inputenc} % Encodage
+\usepackage[T1]{fontenc} % Encodage, facilite Ctrl+F
+\frenchbsetup{StandardLists=true} % Compatibilité enumitem
+\usepackage{tcolorbox}
+\usepackage[hyperref=true, sorting=nty]{biblatex} % Gestion de références, voir https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX
+
+% Core
+\usepackage{fancyhdr} % En-tête et pagination
+\usepackage{booktabs,multirow,multicol,hhline,array} % Tableaux
+\usepackage[flushleft]{threeparttable} % Tableaux à Claudine Allen
+\usepackage{color,soul} % Couleur et formattage de texte
+\usepackage{xcolor} % Plus de couleurs
+\usepackage{ulem} % \ul pour souligner
+\usepackage[safe]{tipa}
+\usepackage{nameref}
+
+% Math
+\usepackage{amsmath,amssymb,amsthm,mathtools,nicefrac,array,units,amsthm,dsfont} % Maths
+\usepackage{mathrsfs} % Lettres cursives
+\usepackage{wasysym,marvosym,gensymb,textcomp} % Symboles divers
+\usepackage[makeroom]{cancel} % Barre oblique d'annulation
+\usepackage{calligra}
+\usepackage{icomma}
+
+% Physique
+\usepackage{verbatim} % Texte brut pour code informatique
+\usepackage{siunitx} % Unités SI, ex.: \SI{2.9(1)e6}{\kilo\meter\per\second}
+\usepackage[version=4]{mhchem} % Équations nucléaires, ex.: \ce{^227_90Th+}
+\usepackage{svrsymbols} % Symboles particules atomiques
+\usepackage{physics} % Your new best friend, voir manuel : http://ctan.math.ca/tex-archive/macros/latex/contrib/physics/physics.pdf
+\usepackage{dsfont}
+\usepackage{xstring}
+\sisetup{detect-weight=true,detect-family=true,separate-uncertainty=true} % Config siunitx
+% barre oblique au lieu de ^{-1} : \SI[per-mode=symbol]{1}{\meter\per\second}
+
+% Figures et graphiques
+\usepackage{graphicx,framed} % Figures et cadres
+\usepackage{subfigure,wrapfig,caption} % Sous-figures et légendes
+\usepackage{pgfplots,tikz} % Dessins et graphiques
+\usepackage[american]{circuitikz} % Dessin de circuits
+\usepgfplotslibrary{groupplots} % Subplots
+\usetikzlibrary{babel,arrows,shadows.blur} % Compatibilité français, dessin de flèches
+\pgfplotsset{compat=1.15} % Pour éviter bugs de mises à jour
+\usepackage{minted} % Environnement pour mettre du code
+\usepackage{glossaries}
+
+
+%-------------------------------
+% Constantes fréquentes
+%-------------------------------
+
+\newcommand{\hc}{6,626\times10^{-34}}       % Constante de Planck
+\newcommand{\hbc}{1,055\times10^{-34}}      % Constante de Planck réduite
+\newcommand{\hevc}{4,136\times10^{-15}}     % Constante de Plank en eV
+\newcommand{\hbevc}{6,582\times10^{-16}}    % Constante de Plank réduite en eV
+\newcommand{\cc}{2,998\times10^8}           % Vitesse de la lumière
+\newcommand{\kc}{1,381\times10^{-23}}       % Constante de Boltzmann
+\newcommand{\wc}{2,898\times10^{-3}}        % Constante de Wien
+\newcommand{\ec}{1,602\times10^{-19}}       % Charge élémentaire
+\newcommand{\mec}{9,109\times10^{-31}}      % Masse de l'électron
+\newcommand{\sbc}{5,670\times10^{-8}}       % Constante de Stefan-Boltzmann
+\newcommand{\prmtvtc}{8,854\times10^{-12}}  % Permittivité du vide (epsilon 0)
+\newcommand{\prmbltc}{1,257\times10^{-6}}   % Perméabilité du vide (mu 0)
+\newcommand{\sfc}{7,297\times10^{-3}}       % Constante de structure fine
+\newcommand{\rc}{8,314}                     % Constante des gaz parfaits [J / mol K]
+\newcommand{\gc}{6,674\times10^{-11}}       % Constante gravitationnelle
+
+
+%-------------------------------
+% Commandes custom
+%-------------------------------
+
+\newminted{python}{
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+} % \begin{pythoncode} pour insérer du code Python
+
+\newminted{cpp}{
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+} % \begin{cppcode} pour insérer du code C++
+
+% Équation de Schrödinger dépendante et indépendante du temps
+\newcommand{\indtemps}{\dv[2]{\psi(x)}{x} = \frac{2m}{\hbar^2}(V(x) - E)\psi(x)}
+\newcommand{\deptemps}{i\hbar\pdv{}{t} \Psi(x,t) = \left[-\frac{\hbar^2}{2m}\pdv[2]{}{x} + V(x,t)\right]\Psi(x,t)}
+
+% Relation de récurrence et équation des racines (PM3)
+\newcommand{\rdr}{[(n+r)(n+r-1)+P_0(n+r)+Q_0]a_n+[P_1(n+r-1)+Q_1]a_{n-1}+[P_2(n+r-2)+Q_2]a_{n-2}+...=0}
+\newcommand{\edr}{r^2+(P_0-1)r+Q_0=0}
+\renewcommand{\real}{\mathbb{R}} % Nombres réels
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% anti-left-right parenthèses () -> \qty()
+\makeatletter
+\def\resetMathstrut@{%
+  \setbox\z@\hbox{%
+    \mathchardef\@tempa\mathcode`\[\relax
+    \def\@tempb##1"##2##3{\the\textfont"##3\char"}%
+    \expandafter\@tempb\meaning\@tempa \relax
+  }%
+  \ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@}
+\makeatother
+\begingroup
+  \catcode`(\active \xdef({\left\string(}
+  \catcode`)\active \xdef){\right\string)}
+\endgroup
+\mathcode`(="8000 \mathcode`)="8000
+
+\newcommand{\teXmas}{\hat{\dot{\ddot{\dddot{\ddddot{\LaTeX}}}}}} % LaTeX de Noel
+\renewcommand*{\thefootnote}{[\arabic{footnote}]} % Crochets indice
+\newcommand{\transpose}[1]{#1^{\mathrm{T}}} % Exposant T pour les matrices transposées
+\newcommand{\siuma}[1]{\quad\qty[\si{#1}]} % Unités SI entre crochets
+\DeclareMathOperator{\taylor}{ST} % Opérateur ST pour les séries de Taylor
+% \newcommand{\tabref}[1]{\textsc{Tableau}~\ref{#1}}
+% \newcommand{\figref}[1]{\textsc{Figure}~\ref{#1}}
+% \numberwithin{table}{section}
+% \numberwithin{figure}{section}
+
+% Opérations sur des matrices et matrices augmentées
+\newenvironment{sysmatrix}[1]
+ {\left[\begin{array}{@{}#1@{}}}
+ {\end{array}\right]}
+\newcommand{\ro}[1]{%
+  \xrightarrow{\mathmakebox[\rowidth]{#1}}%
+}
+\newlength{\rowidth}% Row operation width
+\AtBeginDocument{\setlength{\rowidth}{5em}}
+
+% Template pour les opérations sur des matrices
+
+% \begin{alignat*}{2}
+% \begin{sysmatrix}{ccc|c}
+% 1 &  1 & 1 & 1 \\
+% 2 & -6 & 5 & 9 \\
+% -3 &  \alpha & \beta & 10
+% \end{sysmatrix}
+% &\!\begin{aligned}
+% &\ro{L_2\xrightarrow{}L_2-2L_1}\\
+% &\ro{L_3\xrightarrow{}L_3+3L_1}
+% \end{aligned}
+% \begin{sysmatrix}{ccc|c}
+% 1 &  1 & 1 & 1 \\
+% 0 & -8 & 3 & 7 \\
+% 0 &  \alpha+3 & \beta+3 & 13
+% \end{sysmatrix}
+% \\
+% &\!\begin{aligned}
+% &\ro{L_3\xrightarrow{}8L_3+\left(\alpha+3\right)L_2}
+% \begin{sysmatrix}{ccc|c}
+% 1 &  1 & 1 & 1 \\
+% 0 & -8 & 3 & 7 \\
+% 0 &  0 & 3\alpha +8\beta+33 & 7\alpha +125
+% \end{sysmatrix}
+% \end{aligned}
+% \end{alignat*}
+
+
+%--------------------------
+% Format de texte
+%--------------------------
+
+\setcounter{section}{0} % Titre et numérotage section
+%\renewcommand\thesection{Problème \arabic{section}} % Texte avant le numero de section
+
+% \titlespacing*{\section}{0pt}{0.5em}{0em} % Marges titre section
+
+% Numérotage section-équation (1.1)
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\makeatletter\@addtoreset{equation}{section}\makeatother
+% pour resetter la numérotage d'équation avec \section*{} :
+%\stepcounter{section}
+%\section*{blablabla}
+
+\def\arraystretch{1.25} % Hauteur tabular
+

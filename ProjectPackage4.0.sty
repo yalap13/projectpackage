@@ -1,0 +1,354 @@
+\ProvidesPackage{projectpackage4.0}
+
+\usepackage[left=2.5cm,right=2.5cm,top=4cm,bottom=3.1cm]{geometry}
+\usepackage{cmap} % Facilite recherche de texte Ctrl+F
+\usepackage[french]{babel} % Écriture en français
+\usepackage[utf8]{inputenc} % Encodage
+\usepackage[T1]{fontenc} % Encodage, facilite Ctrl+F
+\frenchbsetup{StandardLists=true} % Compatibilité enumitem
+\usepackage{tcolorbox}
+
+% Core
+\usepackage{fancyhdr} % En-tête et pagination
+\usepackage{hyperref} % Liens cliquables dans PDF
+\usepackage{booktabs,multirow,multicol,hhline,array} % Tableaux
+\usepackage[flushleft]{threeparttable} % Tableaux à Claudine Allen
+\usepackage[compact]{titlesec} % Mise en forme des titres de section
+\usepackage{color,soul} % Couleur et formattage de texte
+\usepackage{xcolor} % Plus de couleurs
+\usepackage{enumitem} % Listes a) b) c)
+\usepackage{ulem} % \ul pour souligner
+\usepackage[safe]{tipa}
+
+% Math
+\usepackage{amsmath,amssymb,amsthm,mathtools,nicefrac,bm,array,units,amsthm,dsfont} % Maths
+\usepackage[noabbrev,nameinlink]{cleveref}
+\usepackage{mathrsfs} % Lettres cursives
+\usepackage{wasysym,marvosym,gensymb,textcomp} % Symboles divers
+\usepackage[makeroom]{cancel} % Barre oblique d'annulation
+% Physique
+\usepackage{verbatim} % Texte brut pour code informatique
+\usepackage{siunitx} % Unités SI, ex.: \SI{2.9(1)e6}{\kilo\meter\per\second}
+%\usepackage[version=4]{mhchem} % Équations nucléaires, ex.: \ce{^227_90Th+}
+%\usepackage{svrsymbols} % Symboles particules atomiques
+\usepackage{physics} % Your new best friend, voir manuel : http://ctan.math.ca/tex-archive/macros/latex/contrib/physics/physics.pdf
+\usepackage{dsfont}
+\usepackage{xstring}
+\sisetup{detect-weight=true,detect-family=true,separate-uncertainty=true} % Config siunitx
+% barre oblique au lieu de ^{-1} : \SI[per-mode=symbol]{1}{\meter\per\second}
+
+% Figures et graphiques
+\usepackage{graphicx,floatrow,framed} % Figures et cadres
+\usepackage{subfigure,wrapfig,caption} % Sous-figures et légendes
+\usepackage{pgfplots,tikz} % Dessins et graphiques
+\usepackage[american]{circuitikz} % Dessin de circuits
+\usepgfplotslibrary{groupplots} % Subplots
+\usetikzlibrary{babel,arrows} % Compatibilité français, dessin de flèches
+\pgfplotsset{compat=1.15} % Pour éviter bugs de mises à jour
+\usepackage{minted} % Environnement pour mettre du code
+
+%%% anti-left-right parenthèses () -> \qty()
+\makeatletter
+\def\resetMathstrut@{%
+  \setbox\z@\hbox{%
+    \mathchardef\@tempa\mathcode`\[\relax
+    \def\@tempb##1"##2##3{\the\textfont"##3\char"}%
+    \expandafter\@tempb\meaning\@tempa \relax
+  }%
+  \ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@}
+\makeatother
+\begingroup
+  \catcode`(\active \xdef({\qty\string(}
+\endgroup
+\mathcode`(="8000
+%%%
+
+\renewcommand\frenchtablename{\textsc{Tableau}}
+% \newcommand{\tabref}[1]{\textsc{Tableau}~\ref{#1}}
+% \newcommand{\figref}[1]{\textsc{Figure}~\ref{#1}}
+% \numberwithin{table}{section}
+% \numberwithin{figure}{section}
+\renewcommand*{\thefootnote}{[\arabic{footnote}]} % Crochets indice
+
+%-------------------------------
+% Constantes fréquentes
+%-------------------------------
+
+    % Physique Quantique
+\newcommand{\hc}{6,626\times10^{-34}}   % Constante de Planck
+\newcommand{\hbc}{1,055\times10^{-34}}  % Constante de Planck réduite
+\newcommand{\cc}{2,998\times10^8}       % Vitesse de la lumière
+\newcommand{\kc}{1,381\times10^{-23}}   % Constante de Boltzmann
+\newcommand{\wc}{2,898\times10^{-3}}    % Constante de Wien
+\newcommand{\ec}{1,602\times10^{-19}}   % Charge élémentaire
+\newcommand{\mec}{9,109\times10^{-31}}  % Masse de l'électron
+\newcommand{\sbc}{5,670\times10^{-8}}   % Constante de Stefan-Boltzmann
+\newcommand{\pvc}{8,854\times10^{-12}}  % Permittivité du vide (epsilon 0)
+\newcommand{\sfc}{7,297\times10^{-3}}   % Constante de structure fine
+
+%-------------------------------
+% Commandes custom
+%-------------------------------
+\newcommand{\uvec}[1]{\boldsymbol{\hat{\textbf{#1}}}} % \uvec{} pour vecteurs unitaires
+
+\newenvironment{pythoni}
+{\begin{minted}
+[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]
+{python}
+}
+{
+\end{minted}
+} % \begin{python} pour insérer du code python
+
+
+\newcommand{\R}{\mathbb{R}} % Nombres réels
+\newcommand{\e}{\mathrm{e}} % Beau e pour exponentielles
+
+%--------------------------
+% Format de texte
+%--------------------------
+
+\def\tb{\textbf}
+\def\mb{\mathbf}
+\def\ti{\textit}
+\def\ts{\textsuperscript}
+\def\del{\partial}
+\def\T{\mathrm{T}}
+\def\tr{\mathrm{tr}}
+
+\newcommand{\siuma}[1]{\quad\qty[\si{#1}]} % Macro pour les unités SI entre crochets
+
+\setcounter{section}{0} % Titre et numérotage section
+%\renewcommand\thesection{Problème \arabic{section}} % Texte avant le numero de section
+
+% \titlespacing*{\section}{0pt}{0.5em}{0em} % Marges titre section
+
+% Numérotage section-équation (1.1)
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\makeatletter\@addtoreset{equation}{section}\makeatother
+
+% pour resetter la numérotage d'équation avec \section*{} :
+%\stepcounter{section}
+%\section*{blablabla}
+
+\def\arraystretch{1.25} % Hauteur tabular
+
+\newenvironment{sysmatrix}[1]
+ {\left[\begin{array}{@{}#1@{}}}
+ {\end{array}\right]}
+\newcommand{\ro}[1]{%
+  \xrightarrow{\mathmakebox[\rowidth]{#1}}%
+}
+\newlength{\rowidth}% row operation width
+\AtBeginDocument{\setlength{\rowidth}{5em}}
+%Template pour les matrices
+%\begin{alignat*}{2}
+%\begin{sysmatrix}{rrr|r}
+% 1 &  1 & 1 & 1 \\
+% 2 & -6 & 5 & 9 \\
+%-3 &  \alpha & \beta & 10
+%\end{sysmatrix}
+%&\!\begin{aligned}
+%&\ro{L_2\xrightarrow{}L_2-2L_1}\\
+%&\ro{L_3\xrightarrow{}L_3+3L_1}
+%\end{aligned}
+%\begin{sysmatrix}{rrr|r}
+% 1 &  1 & 1 & 1 \\
+% 0 & -8 & 3 & 7 \\
+%0 &  \alpha+3 & \beta+3 & 13
+%\end{sysmatrix}
+%\\
+%&\!\begin{aligned}
+%&\ro{L_3\xrightarrow{}8L_3+\left(\alpha+3\right)L_2}
+%\begin{sysmatrix}{rrr|r}
+% 1 &  1 & 1 & 1 \\
+% 0 & -8 & 3 & 7 \\
+%0 &  0 & 3\alpha +8\beta+33 & 7\alpha +125
+%\end{sysmatrix}
+%\end{aligned}
+%\end{alignat*}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\newcommand{\preuve}{$\hfill\square$}
+
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\newcommand{\rdr}{[(n+r)(n+r-1)+P_0(n+r)+Q_0]a_n+[P_1(n+r-1)+Q_1]a_{n-1}+[P_2(n+r-2)+Q_2]a_{n-2}+...=0}
+\newcommand{\edr}{r^2+(P_0-1)r+Q_0=0}
+
+\usepackage{bm}
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+\usepackage[intlimits]{esint}
+
+
+%permittivité du vide
+
+\newcommand{\veps}{8,\!854\ 187\ 812\ 8\times 10^{-12} \text{ F/m}}
+    %\IfEqCase{#1}{%
+    %    {11}{$$8,\!854\ 187\ 812\ 8\times 10^{−12} \text{ F/m}$$}%
+    %    {10}{$$8,\!854\ 187\ 813\times 10^{−12} \text{ F/m}$$}%
+    %    {9}{$$8,\!854\ 187\ 81\times 10^{−12} \text{ F/m}$$}%
+    %    {8}{$$8,\!854\ 187\ 8\times 10^{−12} \text{ F/m}$$}%
+    %    {7}{$$8,\!854\ 188\times 10^{−12} \text{ F/m}$$}%
+    %    {6}{$$8,\!854\ 19\times 10^{−12} \text{ F/m}$$}%
+    %    {5}{$$8,\!854\ 2\times 10^{−12} \text{ F/m}$$}%
+    %    {4}{$$8,\!854\times 10^{−12} \text{ F/m}$$}%
+    %    {3}{$$8,\!85\times 10^{−12} \text{ F/m}$$}%
+    %    {2}{$$8,\!9\times 10^{−12} \text{ F/m}$$}%
+    %    {1}{$$9\times 10^{−12} \text{ F/m}$$}%
+    %    {}{$$8,\!854\ 187\ 812\ 8\times 10^{−12} \text{ F/m}$$}%
+    %}
+%}
+
+% hbar
+
+\newcommand{\vhbar}{1,\!054\ 571\ 817 \times  10^{-34} \text{ J s}}
+    %\IfEqCase{#1}{%
+    %    {10}{$1,\!054\ 571\ 817 \times  10^{-34} \text{ J s}$}%
+    %    {9}{$1,\!054\ 571\ 82 \times  10^{-34} \text{ J s}$}%
+    %    {8}{$1,\!054\ 571\ 8 \times  10^{-34} \text{ J s}$}%
+     %   {7}{$1,\!054\ 572 \times  10^{-34} \text{ J s}$}%
+    %    {6}{$1,\!054\ 57 \times  10^{-34} \text{ J s}$}%
+    %    {5}{$1,\!054\ 6 \times  10^{-34} \text{ J s}$}%
+    %    {4}{$1,\!055 \times  10^{-34} \text{ J s}$}%
+    %    {3}{$1,\!05 \times  10^{-34} \text{ J s}$}%
+    %    {2}{$1,\!1 \times  10^{-34} \text{ J s}$}%
+    %    {1}{$1\times  10^{-34} \text{ J s}$}%
+    %    {}{$1,\!054\ 571\ 817 \times  10^{-34} \text{ J s}$}%
+    %}
+%}
+
+% c
+
+\newcommand{\vc}{2,\!997\ 924\ 58 \times 10^{8}\text{ m/s}}
+    %\IfEqCase{#1}{%
+    %    {9}{$$2,\!997\ 924\ 58 \times 10^{8}\text{ m/s}$$}%
+    %    {8}{$$2,\!997\ 924\ 6 \times 10^{8}\text{ m/s}$$}%
+    %    {7}{$$2,\!997\ 925 \times 10^{8}\text{ m/s}$$}%
+%        {6}{$$2,\!997\ 92 \times 10^{8}\text{ m/s}$$}%
+%        {5}{$$2,\!997\ 9 \times 10^{8}\text{ m/s}$$}%
+%        {4}{$$2,\!998 \times 10^{8}\text{ m/s}$$}%
+%        {3}{$$3,\!00 \times 10^{8}\text{ m/s}$$}%
+%        {2}{$$3,\!0 \times 10^{8}\text{ m/s}$$}%
+ %       {1}{$$3 \times 10^{8}\text{ m/s}$$}%
+ %       {}{$$2,\!997\ 924\ 58 \times 10^{8}\text{ m/s}$$}%
+   % }
+%}
+
+% Masse électron
+
+\newcommand{\vemasse}{9,\!109\ 383\ 56 \times 10^{-31}\text{ kg}}
+    %\IfEqCase{#1}{%
+    %    {9}{$9,\!109\ 383\ 56 \times 10^{-31}\text{ kg}$}%
+    %    {8}{$9,\!109\ 383\ 6 \times 10^{-31}\text{ kg}$}%
+    %    {7}{$9,\!109\ 384 \times 10^{-31}\text{ kg}$}%
+%        {6}{$9,\!109\ 38 \times 10^{-31}\text{ kg}$}%
+ %       {5}{$9,\!109\ 4 \times 10^{-31}\text{ kg}$}%
+  %      {4}{$9,\!109 \times 10^{-31}\text{ kg}$}%
+   %     {3}{$9,\!11 \times 10^{-31}\text{ kg}$}%
+    %    {2}{$9,\!1 \times 10^{-31}\text{ kg}$}%
+     %   {1}{$9 \times 10^{-31}\text{ kg}$}%
+      %  {}{$9,\!109\ 383\ 56 \times 10^{-31}\text{ kg}$}%
+    %}
+%}
+
+% Charge électron
+
+\newcommand{\vecharge}{1,\!602\ 176\ 62 \times 10^{-19}\text{ C}}
+%    \IfEqCase{#1}{%
+ %       {9}{$1,\!602\ 176\ 62 \times 10^{-19}\text{ C}$}%
+  %      {8}{$1,\!602\ 176\ 6 \times 10^{-19}\text{ C}$}%
+   %     {7}{$1,\!602\ 177 \times 10^{-19}\text{ C}$}%
+    %    {6}{$1,\!602\ 18 \times 10^{-19}\text{ C}$}%
+     %   {5}{$1,\!602\ 2 \times 10^{-19}\text{ C}$}%
+      %  {4}{$1,\!602 \times 10^{-19}\text{ C}$}%
+       % {3}{$1,\!60 \times 10^{-19}\text{ C}$}%
+        %{2}{$1,\!6 \times 10^{-19}\text{ C}$}%
+    %    {1}{$2 \times 10^{-19}\text{ C}$}%
+    %    {}{$1,\!602\ 176\ 62 \times 10^{-19}\text{ C}$}%
+    %}
+%}
+
+% Constante de Planck (J s)
+
+\newcommand{\vh}{6,\!626\ 070\ 15 \times 10^{-34}\text{ J s}}
+  %  \IfEqCase{#1}{%
+   %     {9}{$6,\!626\ 070\ 15 \times 10^{-34}\text{ J s}$}%
+    %    {8}{$6,\!626\ 070\ 2 \times 10^{-34}\text{ J s}$}%
+     %   {7}{$6,\!626\ 070 \times 10^{-34}\text{ J s}$}%
+     %   {6}{$6,\!626\ 07 \times 10^{-34}\text{ J s}$}%
+     %   {5}{$6,\!626\ 1 \times 10^{-34}\text{ J s}$}%
+     %   {4}{$6,\!626 \times 10^{-34}\text{ J s}$}%
+     %   {3}{$6,\!63 \times 10^{-34}\text{ J s}$}%
+     %   {2}{$6,\!6 \times 10^{-34}\text{ J s}$}%
+     %   {1}{$7 \times 10^{-34}\text{ J s}$}%
+     %   {}{$6,\!626\ 070\ 15 \times 10^{-34}\text{ J s}$}%
+    %}
+%}
+
+\newcommand{\vheV}{4,\!135\ 667\ 696 \times 10^{-15}\text{ eV s}}
+ %   \IfEqCase{#1}{%
+  %      {10}{$4,\!135\ 667\ 696 \times 10^{-15}\text{ eV s}$}%
+   %     {9}{$4,\!135\ 667\ 70 \times 10^{-15}\text{ eV s}$}%
+    %    {8}{$4,\!135\ 667\ 7 \times 10^{-15}\text{ eV s}$}%
+     %   {7}{$4,\!135\ 668 \times 10^{-15}\text{ eV s}$}%
+      %  {6}{$4,\!135\ 67 \times 10^{-15}\text{ eV s}$}%
+       % {5}{$4,\!135\ 7 \times 10^{-15}\text{ eV s}$}%
+        %{4}{$4,\!136 \times 10^{-15}\text{ eV s}$}%
+        %{3}{$4,\!14 \times 10^{-15}\text{ eV s}$}%
+        %{2}{$4,\!1 \times 10^{-15}\text{ eV s}$}%
+        %{1}{$4 \times 10^{-15}\text{ eV s}$}%
+        %{}{$4,\!135\ 667\ 696 \times 10^{-15}\text{ eV s}$}%
+    %}
+%}
+
+\newcommand{\vmu}{1,\!256\ 637\ 061\ 4\times 10^{-6} \text{ kg m/A}^{2}\text{s}^2}
+%    \IfEqCase{#1}{%
+ %       {11}{$1,\!256\ 637\ 061\ 4\times 10^{−6} \text{ kg m/A}^{−2}\text{s}^2$}%
+  %      {10}{$1,\!256\ 637\ 061\times 10^{−6} \text{ kg m/A}^{−2}\text{s}^2$}%
+   %     {9}{$1,\!256\ 637\ 06\times 10^{−6} \text{ kg m/A}^{−2}\text{s}^2$}%
+    %    {8}{$1,\!256\ 637\ 1\times 10^{−6} \text{ kg m/A}^{−2}\text{s}^2$}%
+     %   {7}{$1,\!256\ 637\times 10^{−6} \text{ kg m/A}^{−2}\text{s}^2$}%
+      %  {6}{$1,\!256\ 64\times 10^{−6} \text{ kg m/A}^{−2}\text{s}^2$}%
+       % {5}{$1,\!256\ 6\times 10^{−6} \text{ kg m/A}^{−2}\text{s}^2$}%
+        %{4}{$1,\!257\times 10^{−6} \text{ kg m/A}^{−2}\text{s}^2$}%
+    %    {3}{$1,\!26\times 10^{−6} \text{ kg m/A}^{−2}\text{s}^2$}%
+    %    {2}{$1,\!3\times 10^{−6} \text{ kg m/A}^{−2}\text{s}^2$}%
+    %    {1}{$1\times 10^{−6} \text{ kg m/A}^{−2}\text{s}^2$}%
+    %    {}{$1,\!256\ 637\ 061\ 4\times 10^{−6} \text{ kg m/A}^{−2}\text{s}^2$}%
+    %}
+%}
+
+% Valeur de G
+
+\newcommand{\vG}{6,\!674\ 30\times 10^{-11}\text{ kg m}^3\text{s}^2}
+%    \IfEqCase{#1}{%
+ %       {6}{\[6,\!674\ 30\times 10^{-11}\text{ kg m}^3\text{s}^2\]}%
+  %      {5}{\[6,\!674\ 3\times 10^{-11}\text{ kg m}^3\text{s}^2\]}%
+   %     {4}{\[6,\!674\times 10^{-11}\text{ kg m}^3\text{s}^2\]}%
+    %    {3}{\[6,\!67\times 10^{-11}\text{ kg m}^3\text{s}^2\]}%
+     %   {2}{\[6,\!7\times 10^{-11}\text{ kg m}^3\text{s}^2\]}%
+      %  {1}{\[7\times 10^{-11}\text{ kg m}^3\text{s}^2\]}%
+       % {}{\[6,\!674\ 30\times 10^{-11}\text{ kg m}^3\text{s}^2\]}%
+    %}
+%}

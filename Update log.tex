@@ -1,0 +1,196 @@
+\documentclass{article}
+\usepackage{projectpackage5.1}
+
+% Commande pour ajouter des entrées à l'update log
+% Syntaxe :
+%   \updatelog{<commande/package>}{<auteur>}{<date>}{<description>}{<exemple de la commande>}
+%   ****La commande étoilée (\updatelog*) est pour les packages
+%       et celle non-étoilée est pour les commandes.
+\DeclareDocumentCommand\updatelog{ s m m m m g }{
+    \IfBooleanTF{#1}{
+        \noindent\textbf{#2}\hfill #3, #4\\[5pt]
+        #5\bigskip
+    }{
+        \IfValueTF{#6}{
+            \noindent\texttt{\textbackslash#2}\hfill #3, #4\\[5pt]
+            #5
+            \begin{center}
+                #6
+            \end{center}
+        }{
+            \noindent\texttt{\textbackslash#2}\hfill #3, #4\\[5pt]
+            
+            #5\bigskip
+        }
+    }
+}
+
+% Remplace l'utilisation des verbatims dans la commande \updatelog
+\newcommand{\code}[1]{\texttt{\textbackslash #1}}
+
+
+
+\begin{document}
+\begin{center}
+    \Huge Update log Project Package
+\end{center}
+\vspace{10pt}
+
+\section*{Project Package 4}
+\bigskip
+\subsection*{Project Package 4.1}
+
+\subsubsection*{Nouvelles commandes}
+
+Ajout de l'équation de Schrödinger dépendante et indépendante du temps
+
+\begin{center}
+    \begin{tabular}{llll}
+    \verb=\indtemps= & & &$\indtemps$ \\
+    \verb=\deptemps= & & &$\deptemps$ \\
+\end{tabular}
+\end{center}
+
+
+\subsection*{Project Package 4.2 (alpha)}
+
+\subsubsection*{Nouveaux packages}
+
+\begin{center}
+    \large \textbf{Tabularx}
+\end{center}
+\begin{verbatim}
+    \usepackage{tabularx}
+\end{verbatim}
+\bigskip
+ Pour faire des tableaux en spécifiant l'espace total occupé. L'espace est réparti également entre les cases.
+ 
+\bigskip
+\begin{center}
+    \begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ item 11 & item 12 & item 13 \\
+ \hline
+ item 21  & item 22  & item 23  \\
+\hline
+\end{tabularx}
+\end{center}
+
+\bigskip
+
+\begin{center}
+    \large \textbf{Glossaries}
+\end{center}
+\begin{verbatim}
+    \usepackage{glossaries}
+\end{verbatim}
+\bigskip
+
+Pour faire des entrées de glossaire, par exemple, dans un rapport de pisse du SPLA.
+\bigskip
+
+\begin{center}
+    \large\textbf{Biblatex}
+\end{center}
+\begin{verbatim}
+    \usepackage{biblatex}
+\end{verbatim}
+Pour gérer les références et faire une bibliographie automatique à partir d'un fichier \texttt{.bib}.
+\bigskip
+
+\begin{center}
+    \large\textbf{fancyvrb}
+\end{center}
+
+\begin{verbatim}
+    \usepackage{fancyvrb}
+\end{verbatim}
+
+Pour mettre du verbatim dans une ligne de texte, comme ceci: \verb+Hello world+
+
+\begin{center}
+    \large\textbf{xspace}
+\end{center}
+
+\begin{verbatim}
+    \usepackage{xspace}
+\end{verbatim}
+
+Pour tout ce qui a rapport aux espaces, notamment quand on veut utiliser la commande pour faire des guillemets français (\verb+\og+ et \verb+\fg+).
+
+\subsubsection*{Nouvelles commandes}
+Ajout de la constante des gaz parfaits
+\begin{center}
+    \verb=\rc= \qquad$\rc$ \\
+\end{center}
+
+Retrait de la commande \verb+\uvec+. Utiliser \verb+\vu+ à la place (fonctionne mieux en général)\\
+
+Ajout de la commande sauce
+\begin{center}
+    \verb=\sauce{Ceci est une note}= \qquad\sauce{Ceci est une note}
+\end{center}
+
+\subsubsection*{Nouveaux environnements}
+
+\begin{center}
+    \large\textbf{pythoncode et cppcode}
+\end{center}
+\begin{verbatim}
+    \begin{pythoncode}
+\end{verbatim}
+Permet d'insérer du code Python directement dans le \TeX\ sans avoir à initialiser minted à chaque fois.
+
+\begin{verbatim}
+    \begin{cppcode}
+\end{verbatim}
+Permet d'insérer du code C++ directement dans le \TeX\ sans avoir à initialiser minted à chaque fois.\\
+
+**À noter que l'environnement \texttt{pythoni} est retiré pour faire place à \texttt{pythoncode}.
+
+\subsection*{Beamer Package 4.2 (alpha)}
+
+Adaptation du Project Package 4.2 pour le rendre compatible avec la classe de document Beamer. Certaines commandes ont dû être retirées pour qu'il soit fonctionnel.
+
+\bigskip
+\section*{Project Package 5 et Beamer Package 5}
+
+Version remaniée et révisée du Project Package 4.2. Les doublons de commande ont été retirés et les commandes et packages ayant des incompatibilités ont été retirés ou modifiés. Il en est de même pour la version adaptée aux Beamers, le Beamer Package 5.
+
+\section*{Project Package 5.1}
+
+\updatelog*{siunitx}{-}{2022}{Ajout de \code{[locale=FR]} dans le package siunitx, ce qui fait en sorte que les nombres à virgule s'affichent automatiquement avec le bon espacement entre la virgule et la première décimale.}
+
+\updatelog{rv, \textbackslash rb, \textbackslash rn}{-, Yalap}{2022}{Ajout du fameux $r$ cursif (ou stylisé) du cours d'électromag avec une variante en gras et une autre en vecteur unitaire.}{\code{rv}$\rightarrow\rv$\\\code{rb}$\rightarrow\rb$\\\code{rn}$\rightarrow\rn$}
+
+\updatelog*{csquotes}{-}{2022}{Ajout du package csquotes. C'est pour les guillemets je pense. La vraie raison de l'ajout, c'est juste pour qu'il arrête de mettre le message d'erreur comme quoi il est recommandé le loader csquotes quand tu loades babel.}
+
+\updatelog*{fvextra}{-}{2022}{Ajout du package fvextra. La seule raison de l'ajout, c'est pour éviter un message d'erreur de csquotes.}
+
+\updatelog*{nccmath}{-}{2022}{Ajout du package nccmath, il donne accès à plusieurs commandes permettant de modifier la taille et l'alignement d'équations mathématiques.}
+
+\updatelog*{Retour des commandes à -}{-}{2022}{Retour des commandes \code{R} et \code{e}, des commandes de raccourci de format de texte et des constantes de - raccourcies.}
+
+\updatelog{Comb}{-}{2022}{Commande permettant de faire des combinaisons.}{$\Comb{n}{k}$}
+
+\updatelog{bigo}{-}{2022-01}{Commande pour la notation Big-O.}{$\bigo{x^2}$}
+
+\updatelog{ee}{Yalap}{2022-01}{Commande permettant d'écrire en notation scientifique.}{$6.626\ee{-34}$}
+
+\updatelog*{Fonctions hyperboliques manquantes}{-}{2022-01}{Ajout des fonctions hyperboliques manquantes.}
+
+\updatelog{si}{Yalap}{2022-02-06}{Modification de la commande du package \textit{siunitx} pour ajouter un espace avant les unités.}{$2.54\si{cm}$}
+
+\updatelog*{ifthen}{Yalap}{2022-02-08}{Ajout du package ifthen pour permettre la création de macros avec des énoncés conditionnels.}
+
+\newpage
+\updatelog{frac}{Yalap}{2022-02-08}{Modification de la commande \code{frac} pour permettre d'avoir des 1 sur ... automatiques. Permet également les fractions sur une ligne avec \code{frac*}.}{\code{frac\{2\}}$\to\frac{2}$\\\code{frac\{\}\{2\}}$\to\frac{}{2}$\\\code{frac\{3\}\{2\}}$\to\frac{3}{2}$\\\code{frac*\{2\}}$\to\frac*{2}$\\\code{frac*\{\}\{2\}}$\to\frac*{}{2}$\\\code{frac*\{3\}\{2\}}$\to\frac*{3}{2}$}
+
+\begin{center}
+    \sauce{***\\À noter que les entrées de l'update log peuvent maintenant être faites avec la commande \code{updatelog}. Voir la commande au haut du \TeX.\\ ***}
+\end{center}
+
+\end{document}
